@@ -1,10 +1,13 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
-/*librerías*/
+/*Libraries*/
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-/* Estructuras */
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+/* Structurs */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -36,6 +39,11 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*Prototypes*/
+
 void push(stack_t *stack, int item);
+char *read_lines(FILE *file);
+char **token_opcode(char *line);
+int (*get_function(char *opcode))(int n, int count_lines);
 
 #endif
