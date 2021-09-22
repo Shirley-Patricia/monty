@@ -1,14 +1,17 @@
 #include "monty.h"
 
-void main(__attribute__((unused)) int argc, char *argv[])
+void main(int argc, char *argv[])
 {
-	unsigned int count_lines = 0, n = 0;
-	char *line, **opcode;
+	unsigned int count_lines = 0;
+	char *line, **opcode, arg = argv[1];
 	FILE *file;
-	size_t size = 0;
-	char *arg = argv[1];
 	stack_t **stack = NULL;
 
+	if (argc != 2)
+	{
+		printf("USAGE: monty file");
+		exit (EXIT_FAILURE);
+	}
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
