@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#include <stdio.h>
 
 char *read_lines(FILE *file)
 {
@@ -24,7 +24,6 @@ char **token_opcode(char *line)
 {
     char **token = NULL;
     char *delimit = " \t\r\n";
-    int size = 0;
     int i = 0;
 
     if (line == NULL)

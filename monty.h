@@ -1,5 +1,6 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
+#define  _POSIX_C_SOURCE 200809L
 /*Libraries*/
 #include <stdio.h>
 #include <stddef.h>
@@ -44,9 +45,10 @@ extern int data;
 
 /*Prototypes*/
 
-void push(stack_t *stack, int item);
 char *read_lines(FILE *file);
 char **token_opcode(char *line);
-int (*get_function(char *opcode))(stack_t **stack, unsigned int count_lines);
+void get_function(char *opcode, unsigned int count_lines, stack_t **stack);
+void push_function(stack_t **stack, unsigned int line_number);
+void pall_function(stack_t **stack, unsigned int line_number);
 
 #endif

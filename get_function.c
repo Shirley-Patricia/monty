@@ -7,8 +7,9 @@
  * Return: 0
  */
 
-int (*get_function(char *opcode))(stack_t **stack, unsigned int count_lines)
+void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 {
+
 	instruction_t ops[] = {
 		{"push", push_function},
 		{"pall", pall_function},
@@ -20,10 +21,12 @@ int (*get_function(char *opcode))(stack_t **stack, unsigned int count_lines)
 	while (ops[i].opcode != NULL)
 	{
 		if (*opcode == *(ops[i].opcode))
-			(ops[i].f);
-		else
-			return (-1);
+		{
+			(ops[i].f)(stack, count_lines);
+			break;
+		}
 		i++;
 	}
-	return (0);
+	printf("L%u: unknown instruction %s", count_lines, opcode);
+	exit(EXIT_FAILURE);
 }
