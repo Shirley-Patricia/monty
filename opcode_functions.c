@@ -7,12 +7,10 @@
  * Return: 0
  */
 
-void push_function(stack_t **stack, unsigned int line_number)
+void push_function(stack_t **stack, int data)
 {
-	int data;
 	stack_t *new_stack = NULL;
 	
-	(void)line_number;
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
@@ -26,9 +24,11 @@ void push_function(stack_t **stack, unsigned int line_number)
 	{
 		new_stack->next = *stack;
 		(*stack)->prev = new_stack;
+		*stack = new_stack;
 	}
 	*stack = new_stack;
 }
+
 
 /**
  * pall - function that print all of the elements of a Doubly linked list.
@@ -46,7 +46,7 @@ void pall_function(stack_t **stack, unsigned int line_number)
 	temp = (*stack);
 	while (temp != NULL)
 	{
-		printf("%d", temp->n);
+		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
 }

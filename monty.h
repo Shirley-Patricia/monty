@@ -1,6 +1,7 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 #define  _POSIX_C_SOURCE 200809L
+
 /*Libraries*/
 #include <stdio.h>
 #include <stddef.h>
@@ -40,15 +41,13 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*external variable*/
-extern int data;
 
 /*Prototypes*/
 
 char *read_lines(FILE *file);
 char **token_opcode(char *line);
 void get_function(char *opcode, unsigned int count_lines, stack_t **stack);
-void push_function(stack_t **stack, unsigned int line_number);
+void push_function(stack_t **stack, int data);
 void pall_function(stack_t **stack, unsigned int line_number);
 
 #endif

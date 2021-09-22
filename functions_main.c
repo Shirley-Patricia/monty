@@ -23,7 +23,7 @@ char *read_lines(FILE *file)
 char **token_opcode(char *line)
 {
     char **token = NULL;
-    char *delimit = " \t\r\n";
+    char *delimit = " \n";
     int i = 0;
 
     if (line == NULL)
@@ -40,7 +40,6 @@ char **token_opcode(char *line)
     for (i = 1; i < 2; i++)
     {
         token[i] = strtok(NULL, delimit);
-		printf("-->%s", token[i]);
     }
     return (token);
 }

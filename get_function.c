@@ -11,22 +11,27 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 {
 
 	instruction_t ops[] = {
-		{"push", push_function},
 		{"pall", pall_function},
 		/*{"pop", pop_function},
+		{"push", push_function},
 		{"pint", pint_function},
 		{"swap", swap_function},*/
 		{NULL, NULL}};
 	int i = 0;
+
 	while (ops[i].opcode != NULL)
 	{
-		if (*opcode == *(ops[i].opcode))
+		
+		if (strcmp(opcode, ops[i].opcode) == 0)
 		{
 			(ops[i].f)(stack, count_lines);
 			break;
 		}
 		i++;
 	}
-	printf("L%u: unknown instruction %s", count_lines, opcode);
-	exit(EXIT_FAILURE);
+	if (ops[i].opcode == NULL)
+	{
+		printf("L%u: unknown instruction %s", count_lines, opcode);
+		exit(EXIT_FAILURE);
+	}
 }
