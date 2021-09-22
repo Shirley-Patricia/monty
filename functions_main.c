@@ -1,6 +1,13 @@
 #include "monty.h"
 #include <stdio.h>
 
+/**
+ * read_lines - read lines of the monty file
+ * @file: The operator
+ *
+ * Return: string
+ */
+
 char *read_lines(FILE *file)
 {
 	char *lines = NULL;
@@ -19,27 +26,33 @@ char *read_lines(FILE *file)
 	return (lines);
 }
 
+/**
+ * token_opcode - tokenize the lines of the monty file
+ * @line: line to tokenize
+ *
+ * Return: string
+ */
 
 char **token_opcode(char *line)
 {
-    char **token = NULL;
-    char *delimit = " \n";
-    int i = 0;
+	char **token = NULL;
+	char *delimit = " \n";
+	int i = 0;
 
-    if (line == NULL)
-    {
-        return (NULL);
-    }
-    token = malloc(sizeof(char *) * 2 + 2);
-    if (!token)
-    {
-        free(token);
-        return (NULL);
-    }
-    token[0] = strtok(line, delimit);
-    for (i = 1; i < 2; i++)
-    {
-        token[i] = strtok(NULL, delimit);
-    }
-    return (token);
+	if (line == NULL)
+	{
+		return (NULL);
+	}
+	token = malloc(sizeof(char *) * 2 + 2);
+	if (!token)
+	{
+		free(token);
+		return (NULL);
+	}
+	token[0] = strtok(line, delimit);
+	for (i = 1; i < 2; i++)
+	{
+		token[i] = strtok(NULL, delimit);
+	}
+	return (token);
 }

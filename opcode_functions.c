@@ -1,16 +1,17 @@
 #include "monty.h"
 
 /**
- * push_function - Struct op
- * @s: The operator
+ * push_function - add data in doubly linked list
+ * @stack: stack structure
+ * @data: integer of the list
  *
- * Return: 0
+ * Return: nothing
  */
 
 void push_function(stack_t **stack, int data)
 {
 	stack_t *new_stack = NULL;
-	
+
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
@@ -29,9 +30,8 @@ void push_function(stack_t **stack, int data)
 	*stack = new_stack;
 }
 
-
 /**
- * pall - function that print all of the elements of a Doubly linked list.
+ * pall_function - print all of the elements of a Doubly linked list.
  * @stack: pointer to the list
  * @line_number: number of lines
  *

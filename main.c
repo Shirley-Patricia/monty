@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * main - it run the monty file
+ * @argc: count
+ * @argv: array
+ *
+ * Return: 0
+ */
 
 int main(int argc, char *argv[])
 {
@@ -13,13 +20,13 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		printf("USAGE: monty file");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	while ((getline(&lines, &buf, file)) != -1)
 	{
@@ -29,7 +36,7 @@ int main(int argc, char *argv[])
 			free(lines);
 			exit(EXIT_FAILURE);
 		}
-        opcode = token_opcode(lines);
+		opcode = token_opcode(lines);
 		if (strcmp(opcode[0], "push") == 0)
 		{
 			data = atoi(opcode[1]);
@@ -39,5 +46,6 @@ int main(int argc, char *argv[])
 			get_function(opcode[0], count_lines, &stack);
 		count_lines++;
 	}
+	free(lines);
 	return (0);
 }
