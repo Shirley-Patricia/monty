@@ -36,7 +36,7 @@ char *read_lines(FILE *file)
 char **token_opcode(char *line)
 {
 	char **token = NULL;
-	char *delimit = " \n";
+	char *delimit = " \t\n";
 	int i = 0;
 
 	if (line == NULL)
@@ -46,8 +46,9 @@ char **token_opcode(char *line)
 	token = malloc(sizeof(char *) * 2 + 2);
 	if (!token)
 	{
+		fprintf(stderr, "Error: malloc failed\n");
 		free(token);
-		return (NULL);
+		exit(EXIT_FAILURE);
 	}
 	token[0] = strtok(line, delimit);
 	for (i = 1; i < 2; i++)
