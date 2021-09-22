@@ -39,11 +39,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*external variable*/
+extern int data;
+
 /*Prototypes*/
 
 void push(stack_t *stack, int item);
 char *read_lines(FILE *file);
 char **token_opcode(char *line);
-int (*get_function(char *opcode))(int n, int count_lines);
+int (*get_function(char *opcode))(stack_t **stack, unsigned int count_lines);
 
 #endif

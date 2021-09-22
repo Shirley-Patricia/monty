@@ -7,6 +7,7 @@ void main(__attribute__((unused)) int argc, char *argv[])
 	FILE *file;
 	size_t size = 0;
 	char *arg = argv[1];
+	stack_t **stack = NULL;
 
 	file = fopen(argv[1], "r");
 	if (file == NULL)
@@ -18,11 +19,11 @@ void main(__attribute__((unused)) int argc, char *argv[])
 	{
         opcode = token_opcode(line);
 		count_lines++;
-		printf("%s\n", (*opcode));
-		n = atoi(opcode[1]);
-		get_function(opcode[0])(n, count_lines);
-	 	/*printf("%s", line);
-	 	
-		printf("%d", count_lines);*/
+		data = atoi(opcode[1]);
+		if (get_function(opcode[0])(stack, count_lines) == -1)
+		{
+			printf("L%u: unknown instruction %s", count_lines, opcode);
+			exit(EXIT_FAILURE);
+		}
 	}
 }
