@@ -77,13 +77,13 @@ int isEmpty(stack_t *root)
  * Return: a integer.
  */
 
-void free_stack(stack_t *stack)
+void free_stack(stack_t **stack)
 {
 	stack_t *temp;
 
-	while ((temp = stack) != NULL)
+	while ((temp = *stack) != NULL)
 	{
-		stack = stack->next;
+		*stack = (*stack)->next;
 		free(temp);
 	}
 }
