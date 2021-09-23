@@ -3,12 +3,13 @@
 /**
  * push_function - add data in doubly linked list
  * @stack: stack structure
- * @data: integer of the list
+ * @line_number: number of line.
+ * @glb_data: number to add to the list
  *
  * Return: nothing
  */
 
-void push_function(stack_t **stack, int data)
+void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 {
 	stack_t *new_stack = NULL;
 
@@ -18,7 +19,17 @@ void push_function(stack_t **stack, int data)
 		printf("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	new_stack->n = data;
+	if (!glb_data || ((*glb_data) < 47 || (*glb_data) > 57))
+	{
+		if ((*glb_data) != 45)
+		glb_data = NULL;
+	}
+	if (glb_data == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	new_stack->n = atoi(glb_data);
 	new_stack->next = NULL;
 	new_stack->prev = NULL;
 	if (*stack != NULL)

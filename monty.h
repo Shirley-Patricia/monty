@@ -2,6 +2,7 @@
 #define _MONTY_H_
 #define _POSIX_C_SOURCE 200809L
 
+
 /*Libraries*/
 #include <stdio.h>
 #include <stddef.h>
@@ -9,6 +10,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+
 /* Structurs */
 
 /**
@@ -46,7 +48,7 @@ typedef struct instruction_s
 char *read_lines(FILE *file);
 char **token_opcode(char *line);
 void get_function(char *opcode, unsigned int count_lines, stack_t **stack);
-void push_function(stack_t **stack, int data);
+void push_function(stack_t **stack, char *glb_data, unsigned int line_number);
 void pall_function(stack_t **stack, unsigned int line_number);
 
 #endif

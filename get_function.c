@@ -16,7 +16,6 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"pall", pall_function},
 		/**
 		*{"pop", pop_function},
-		*{"push", push_function},
 		*{"pint", pint_function},
 		*{"swap", swap_function},
 		*/

@@ -11,11 +11,10 @@
 int main(int argc, char *argv[])
 {
 	unsigned int count_lines = 1;
-	char *lines = NULL, **opcode = NULL;
+	char *lines = NULL, *glb_data = NULL, **opcode = NULL;
 	FILE *file = NULL;
 	stack_t *stack = NULL;
 	size_t buf = 0;
-	int data = 0;
 
 	if (argc != 2)
 	{
@@ -39,16 +38,10 @@ int main(int argc, char *argv[])
 		opcode = token_opcode(lines);
 		if (opcode[0])
 		{
+			if (opcode[1])
+				glb_data = opcode[1];
 			if (strcmp(opcode[0], "push") == 0)
-			{
-				if (!opcode[1] || (*opcode[1] < 47 || *opcode[1] > 57))
-				{
-					fprintf(stderr, "L%u: usage: push integer\n", count_lines);
-					exit(EXIT_FAILURE);
-				}
-				data = atoi(opcode[1]);
-				push_function(&stack, data);
-			}
+				push_function(&stack, glb_data, count_lines);
 			else
 				get_function(opcode[0], count_lines, &stack);
 		}
