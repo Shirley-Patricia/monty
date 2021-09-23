@@ -16,10 +16,9 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"pall", pall_function},
 		{"pint", pint_function},
 		{"pop", pop_function},
-		/**
-		*{"swap", swap_function},
-		*/
-		{NULL, NULL}};
+		{"swap", swap_function},
+		{NULL, NULL}
+		};
 	int i = 0;
 
 	while (ops[i].opcode != NULL)
