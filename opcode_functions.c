@@ -16,7 +16,7 @@ void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
-		printf("Error: malloc failed");
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	if (!glb_data || ((*glb_data) < 47 || (*glb_data) > 57))
