@@ -50,6 +50,7 @@ char **token_opcode(char *line);
 void get_function(char *opcode, unsigned int count_lines, stack_t **stack);
 int isEmpty(stack_t *root);
 void free_stack(stack_t *stack);
+int count_word(char *str, char *delim);
 void push_function(stack_t **stack, char *glb_data, unsigned int line_number);
 void pall_function(stack_t **stack, unsigned int line_number);
 void pint_function(stack_t **stack, unsigned int line_number);

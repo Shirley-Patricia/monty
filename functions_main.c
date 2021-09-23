@@ -37,20 +37,21 @@ char **token_opcode(char *line)
 	char **token = NULL;
 	char *delimit = " \t\n";
 	int i = 0;
+	int size = 0;
 
 	if (line == NULL)
 	{
 		return (NULL);
 	}
-	token = malloc(sizeof(char *) * 2 + 2);
+	size = count_word(line, " ");
+	token = malloc(sizeof(char *) * (size + 1));
 	if (!token)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(token);
 		exit(EXIT_FAILURE);
 	}
 	token[0] = strtok(line, delimit);
-	for (i = 1; i < 2; i++)
+	for (i = 1; i < size; i++)
 	{
 		token[i] = strtok(NULL, delimit);
 	}
@@ -85,4 +86,35 @@ void free_stack(stack_t *stack)
 		stack = stack->next;
 		free(temp);
 	}
+}
+
+#define OUT 0
+#define IN 1
+
+/**
+ * count_word- word counter
+ * @str: string a count.
+ * @delim: delimitator.
+ *
+ * Return: a word.
+ */
+int count_word(char *str, char *delim)
+{
+	int count = OUT;
+	int word = 0;
+
+	while (*str)
+	{
+		if (*str == *delim || *str == '\n' || *str == '\t')
+		{
+			count = OUT;
+		}
+		else if (count == OUT)
+		{
+			count = IN;
+			word++;
+		}
+		str++;
+	}
+	return (word);
 }

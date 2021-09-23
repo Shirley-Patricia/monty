@@ -17,6 +17,7 @@ void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 	if (new_stack == NULL)
 	{
 		printf("Error: malloc failed\n");
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	if (!glb_data || ((*glb_data) < 47 || (*glb_data) > 57))
@@ -27,6 +28,7 @@ void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 	if (glb_data == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	new_stack->n = atoi(glb_data);
@@ -36,7 +38,6 @@ void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 	{
 		new_stack->next = *stack;
 		(*stack)->prev = new_stack;
-		*stack = new_stack;
 	}
 	*stack = new_stack;
 }

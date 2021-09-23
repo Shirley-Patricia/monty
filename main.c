@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	unsigned int count_lines = 1;
 	char *lines = NULL, *glb_data = NULL, **opcode = NULL;
-	FILE *file = NULL;
+	FILE *file;
 	stack_t *stack = NULL;
 	size_t buf = 0;
 
@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
 		if (lines == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
-			free(lines);
 			exit(EXIT_FAILURE); }
 		opcode = token_opcode(lines);
 		if (opcode[0])
@@ -41,9 +40,10 @@ int main(int argc, char *argv[])
 				push_function(&stack, glb_data, count_lines);
 			else
 				get_function(opcode[0], count_lines, &stack); }
-		count_lines++; }
+		count_lines++;
+		free(opcode); }
+	free(lines);
 	fclose(file);
 	free_stack(stack);
-	free(lines);
 	return (0);
 }
