@@ -106,31 +106,36 @@ void pop_function(stack_t **stack, unsigned int line_number)
 	free(tmp);
 }
 
+
+/**
+ * swap_function - swaps the top two elements of the stack.
+ * @stack: pointer to the list
+ * @line_number: number of lines
+ *
+ * Return: nothing.
+ */
+
 void swap_function(stack_t **stack, unsigned int line_number)
 {
- stack_t *temp = NULL;
- stack_t *current = NULL;
- int len = 1;
-    if (isEmpty(*stack))
-    {
-        fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    current = *stack;
-    while (current != NULL)
-    {
-        len++;
-        current = current->next;
-    }
-    if (len < 2)
-    {
-        fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    temp = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
-    temp->next = (*stack)->next;
-    (*stack)->next = temp;
-    temp->prev = *stack;
-} 
+stack_t *temp = NULL;
+stack_t *current = NULL;
+int len = 1;
+
+	current = *stack;
+	while (current != NULL)
+{
+		len++;
+		current = current->next;
+	}
+	if (len < 2)
+{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+}
+temp = *stack;
+*stack = (*stack)->next;
+(*stack)->prev = NULL;
+temp->next = (*stack)->next;
+(*stack)->next = temp;
+temp->prev = *stack;
+}
