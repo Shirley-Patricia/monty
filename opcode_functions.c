@@ -61,3 +61,21 @@ void pall_function(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+/**
+ * pint_function - print the value at the top of a Doubly linked list.
+ * @stack: pointer to the list
+ * @line_number: number of lines
+ *
+ * Return: nothing.
+ */
+
+void pint_function(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}

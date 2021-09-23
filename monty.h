@@ -50,5 +50,6 @@ char **token_opcode(char *line);
 void get_function(char *opcode, unsigned int count_lines, stack_t **stack);
 void push_function(stack_t **stack, char *glb_data, unsigned int line_number);
 void pall_function(stack_t **stack, unsigned int line_number);
+void pint_function(stack_t **stack, unsigned int line_number);
 
 #endif

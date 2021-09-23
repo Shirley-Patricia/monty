@@ -14,9 +14,9 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 
 	instruction_t ops[] = {
 		{"pall", pall_function},
+		{"pint", pint_function},
 		/**
 		*{"pop", pop_function},
-		*{"pint", pint_function},
 		*{"swap", swap_function},
 		*/
 		{NULL, NULL}};
