@@ -119,7 +119,7 @@ void swap_function(stack_t **stack, unsigned int line_number)
 {
 stack_t *temp = NULL;
 stack_t *current = NULL;
-int len = 1;
+int len = 0;
 
 	current = *stack;
 	while (current != NULL)
