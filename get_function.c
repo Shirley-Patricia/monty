@@ -34,7 +34,7 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 	}
 	if (ops[i].opcode == NULL)
 	{
-		printf("L%u: unknown instruction %s\n", count_lines, opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", count_lines, opcode);
 		exit(EXIT_FAILURE);
 	}
 }

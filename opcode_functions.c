@@ -16,7 +16,7 @@ void push_function(stack_t **stack, char *glb_data, unsigned int line_number)
 	new_stack = malloc(sizeof(stack_t));
 	if (new_stack == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}

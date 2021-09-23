@@ -16,7 +16,7 @@ char *read_lines(FILE *file)
 	num_char = getline(&lines, &buf, file);
 	if (lines == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free(lines);
 		exit(EXIT_FAILURE);
 	}
