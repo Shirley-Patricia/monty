@@ -34,10 +34,14 @@ int main(int argc, char *argv[])
 		opcode = token_opcode(lines);
 		if (opcode[0])
 		{
-			if (opcode[1])
-				glb_data = opcode[1];
 			if (strcmp(opcode[0], "push") == 0)
+			{
+				if (opcode[1])
+				glb_data = opcode[1];
+				else
+				glb_data = "";
 				push_function(&stack, glb_data, count_lines);
+			}
 			else
 				get_function(opcode[0], count_lines, &stack); }
 		count_lines++;
