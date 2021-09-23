@@ -75,10 +75,32 @@ void pall_function(stack_t **stack, unsigned int line_number)
 
 void pint_function(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	if (isEmpty(*stack))
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * pop_function - print the value at the top of a Doubly linked list.
+ * @stack: pointer to the list
+ * @line_number: number of lines
+ *
+ * Return: nothing.
+ */
+
+void pop_function(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	tmp = *stack;
+	if (isEmpty(*stack))
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	free(tmp);
 }

@@ -56,3 +56,33 @@ char **token_opcode(char *line)
 	}
 	return (token);
 }
+
+/**
+ * isEmpty -  check if stack is empty
+ * @root: doubly linked list
+ *
+ * Return: string
+ */
+
+int isEmpty(stack_t *root)
+{
+	return (!root);
+}
+
+/**
+ * free_stack - free memory of a Doubly linked list.
+ * @stack: head of the list
+ *
+ * Return: a integer.
+ */
+
+void free_stack(stack_t *stack)
+{
+	stack_t *temp;
+
+	while ((temp = stack) != NULL)
+	{
+		stack = stack->next;
+		free(temp);
+	}
+}

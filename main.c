@@ -19,22 +19,19 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE);	}
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE);	}
 	while ((getline(&lines, &buf, file)) != -1)
 	{
 		if (lines == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			free(lines);
-			exit(EXIT_FAILURE);
-		}
+			exit(EXIT_FAILURE); }
 		opcode = token_opcode(lines);
 		if (opcode[0])
 		{
@@ -43,10 +40,10 @@ int main(int argc, char *argv[])
 			if (strcmp(opcode[0], "push") == 0)
 				push_function(&stack, glb_data, count_lines);
 			else
-				get_function(opcode[0], count_lines, &stack);
-		}
-		count_lines++;
-	}
+				get_function(opcode[0], count_lines, &stack); }
+		count_lines++; }
+	fclose(file);
+	free_stack(stack);
 	free(lines);
 	return (0);
 }
