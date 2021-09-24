@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE); }
 		opcode = token_opcode(lines);
-		if (opcode[0])
+		if (opcode[0] && opcode[0][0] != 35)
 		{
 			if (strcmp(opcode[0], "push") == 0)
 			{
