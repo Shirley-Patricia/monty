@@ -7,11 +7,20 @@
  *
  * Return: nothing.
  */
+
 void nop_function(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
 }
+
+/**
+ * pchar_function - prints the char at the top of the stack.
+ * @stack: pointer to the list
+ * @line_number: number of lines
+ *
+ * Return: nothing.
+ */
 
 void pchar_function(stack_t **stack, unsigned int line_number)
 {
@@ -27,4 +36,32 @@ void pchar_function(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * pchar_function - prints the char at the top of the stack.
+ * @stack: pointer to the list
+ * @line_number: number of lines
+ *
+ * Return: nothing.
+ */
+
+void pstr_function(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	if (isEmpty(*stack))
+	{
+		printf("\n");
+		return;
+	}
+
+	temp = (*stack);
+	while (temp != NULL && temp->n >= 32 && temp->n <= 126)
+	{
+		printf("%c", temp->n);
+		temp = temp->next;
+	}
+	printf("\n");
 }

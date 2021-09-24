@@ -13,6 +13,7 @@ void add_function(stack_t **stack, unsigned int line_number)
 	stack_t *current = NULL;
 	int len = 0;
 	int sum = 0;
+
 	current = *stack;
 	while (current != NULL)
 	{
@@ -121,6 +122,7 @@ void mul_function(stack_t **stack, unsigned int line_number)
 	stack_t *current = NULL;
 	int len = 0;
 	int mul = 0;
+
 	current = *stack;
 	while (current != NULL)
 	{
@@ -155,6 +157,7 @@ void mod_function(stack_t **stack, unsigned int line_number)
 	stack_t *current = NULL;
 	int len = 0;
 	int mod = 0;
+
 	current = *stack;
 	while (current != NULL)
 	{

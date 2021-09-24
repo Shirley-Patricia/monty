@@ -24,6 +24,7 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"mul", mul_function},
 		{"mod", mod_function},
 		{"pchar", pchar_function},
+		{"pstr", pstr_function},
 		{NULL, NULL}
 		};
 	int i = 0;
