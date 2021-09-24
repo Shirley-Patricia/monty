@@ -17,6 +17,9 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"pint", pint_function},
 		{"pop", pop_function},
 		{"swap", swap_function},
+		{"add", add_function},
+		{"nop", nop_function},
+		{"sub", add_function},
 		{NULL, NULL}
 		};
 	int i = 0;
