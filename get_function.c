@@ -19,7 +19,10 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"swap", swap_function},
 		{"add", add_function},
 		{"nop", nop_function},
-		{"sub", add_function},
+		{"sub", sub_function},
+		{"div", div_function},
+		{"mul", mul_function},
+		{"mod", mod_function},
 		{NULL, NULL}
 		};
 	int i = 0;
