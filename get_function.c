@@ -23,6 +23,7 @@ void get_function(char *opcode, unsigned int count_lines, stack_t **stack)
 		{"div", div_function},
 		{"mul", mul_function},
 		{"mod", mod_function},
+		{"pchar", pchar_function},
 		{NULL, NULL}
 		};
 	int i = 0;
